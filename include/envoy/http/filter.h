@@ -223,6 +223,11 @@ public:
   virtual void addDecodedData(Buffer::Instance& data, bool streaming_filter) PURE;
 
   /**
+   * fixfix
+   */
+  virtual void decodeData(Buffer::Instance& data, bool end_stream) PURE;
+
+  /**
    * Adds decoded trailers. May only be called in decodeData when end_stream is set to true.
    * If called in any other context, an assertion will be triggered.
    *
@@ -475,6 +480,11 @@ public:
   virtual void addEncodedData(Buffer::Instance& data, bool streaming_filter) PURE;
 
   /**
+   * fixfix
+   */
+  virtual void encodeData(Buffer::Instance& data, bool end_stream) PURE;
+
+  /**
    * Adds encoded trailers. May only be called in encodeData when end_stream is set to true.
    * If called in any other context, an assertion will be triggered.
    *
@@ -517,7 +527,7 @@ public:
  */
 class StreamEncoderFilter : public StreamFilterBase {
 public:
-  /*
+  /**
    * Called with 100-continue headers.
    *
    * This is not folded into encodeHeaders because most Envoy users and filters
